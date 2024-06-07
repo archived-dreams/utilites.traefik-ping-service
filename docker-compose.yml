@@ -1,0 +1,41 @@
+services:
+
+  ###
+  # Traefik
+  ###
+  traefik:
+    container_name: traefik
+    image: traefik:latest
+    restart: unless-stopped
+    environment:
+      - NETWORK_DOMAIN=${NETWORK_DOMAIN}
+    command:
+      - "--certificatesresolvers.customResolver.acme.email=acme@${NETWORK_DOMAIN}"
+    security_opt:
+      - no-new-privileges:true
+    ports:
+      - 80:80/tcp
+      - 80:80/udp
+      - 443:443/tcp
+      - 443:443/udp
+    networks:
+      public:
+      private:
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./traefik/traefik.yml:/traefik.yml:ro
+      - ./traefik/services/:/services/:ro
+      - ./traefik/acme/:/acme/
+
+networks:
+  public:
+    name: public-${NETWORK_PREFIX}-network
+  private:
+    name: private-${NETWORK_PREFIX}-network
+    internal: true
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.19.0.0/24
+          gateway: 172.19.0.1

@@ -1,0 +1,31 @@
+ping:
+  manualRouting: true
+
+http:
+  routers:
+    authelia:
+      entryPoints:
+      - web
+      - web-secure
+      service: ping@internal
+      rule: Host(`{{ env "NETWORK_DOMAIN" }}`)
+      middlewares:
+      - ping-middleware
+      - cors-middleware
+
+  middlewares:
+    ping-middleware:
+      headers:
+        customResponseHeaders:
+          X-Ping: "pong"
+
+    cors-middleware:
+      headers:
+        accessControlAllowMethods:
+          - "GET"
+          - "OPTIONS"
+          - "HEAD"
+        accessControlAllowOrigin: "*"
+        accessControlMaxAge: 86400
+        accessControlAllowHeaders: "*"
+        accessControlAllowCredentials: true
