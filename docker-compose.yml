@@ -20,7 +20,6 @@ services:
       - 443:443/udp
     networks:
       public:
-      private:
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /var/run/docker.sock:/var/run/docker.sock:ro
@@ -31,11 +30,3 @@ services:
 networks:
   public:
     name: public-${NETWORK_PREFIX}-network
-  private:
-    name: private-${NETWORK_PREFIX}-network
-    internal: true
-    ipam:
-      driver: default
-      config:
-        - subnet: 172.19.0.0/24
-          gateway: 172.19.0.1
