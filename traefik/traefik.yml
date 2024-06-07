@@ -16,7 +16,7 @@ entryPoints:
     http3: {}
     http:
       tls:
-        certResolver: customResolver
+        # certResolver: customResolver
 
 providers:
   docker:
