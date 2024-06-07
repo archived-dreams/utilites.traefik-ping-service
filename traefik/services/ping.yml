@@ -22,11 +22,11 @@ http:
     cors-middleware:
       headers:
         accessControlAllowMethods:
-          - "GET"
-          - "OPTIONS"
-          - "HEAD"
-        accessControlAllowOrigins:
-          - "*"
-        accessControlMaxAge: 86400
+          - GET
+          - OPTIONS
+          - HEAD
         accessControlAllowHeaders: "*"
-        accessControlAllowCredentials: true
+        accessControlAllowOriginList:
+          - "*"
+        accessControlMaxAge: 100
+        addVaryHeader: true
