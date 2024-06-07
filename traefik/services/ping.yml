@@ -1,4 +1,5 @@
 ping:
+  enabled: true
   manualRouting: true
 
 http:
