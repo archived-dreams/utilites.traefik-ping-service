@@ -29,6 +29,9 @@ providers:
 api:
   dashboard: false
 
+ping:
+  manualRouting: true
+
 certificatesResolvers:
   customResolver:
     acme:
