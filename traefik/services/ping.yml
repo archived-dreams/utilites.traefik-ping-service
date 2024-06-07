@@ -5,7 +5,7 @@ http:
       - web
       - web-secure
       service: ping@internal
-      rule: Host(`{{ env "NETWORK_DOMAIN" }}`)
+      rule: Host(`{{ env "NETWORK_DOMAIN" }}`) && Path(`/ping`)
       middlewares:
       - ping-middleware
       - cors-middleware
