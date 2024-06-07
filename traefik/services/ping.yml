@@ -25,7 +25,8 @@ http:
           - "GET"
           - "OPTIONS"
           - "HEAD"
-        accessControlAllowOrigin: "*"
+        accessControlAllowOrigins:
+          - "*"
         accessControlMaxAge: 86400
         accessControlAllowHeaders: "*"
         accessControlAllowCredentials: true
