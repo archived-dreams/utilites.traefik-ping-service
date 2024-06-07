@@ -32,9 +32,17 @@ api:
 ping:
   manualRouting: true
 
-certificatesResolvers:
-  customResolver:
-    acme:
-      storage: /acme/acme.json
-      httpChallenge:
-        entryPoint: web
+tls:
+  options:
+    default:
+      certificate:
+        generate:
+          domains:
+            - '*.{{ env "NETWORK_DOMAIN" }}'
+
+# certificatesResolvers:
+#   customResolver:
+#     acme:
+#       storage: /acme/acme.json
+#       httpChallenge:
+#         entryPoint: web
