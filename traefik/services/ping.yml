@@ -3,7 +3,7 @@ ping:
 
 http:
   routers:
-    authelia:
+    ping:
       entryPoints:
       - web
       - web-secure
