@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [ ! -d "./certs" ]; then
-  rm -fr './cers"
+  rm -fr "./cers"
   mkdir -p "./certs"
 fi
 
