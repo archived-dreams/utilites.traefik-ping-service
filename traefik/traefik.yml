@@ -33,12 +33,9 @@ ping:
   manualRouting: true
 
 tls:
-  options:
-    default:
-      certificate:
-        generate:
-          domains:
-            - '*.{{ env "NETWORK_DOMAIN" }}'
+  certificates:
+    - certFile: /certs/selfsigned.crt
+      keyFile: /certs/selfsigned.key
 
 # certificatesResolvers:
 #   customResolver:
