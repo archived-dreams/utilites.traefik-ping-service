@@ -7,18 +7,18 @@ http:
       service: ping@internal
       rule: Host(`{{ env "NETWORK_DOMAIN" }}`) && Path(`/ping`)
       middlewares:
-      - ping-middleware
       - cors-middleware
+      - ping-middleware
 
   middlewares:
     ping-middleware:
       headers:
         customResponseHeaders:
+          X-Ping: "pong"
           Cache-Control: "no-store, no-cache, must-revalidate, proxy-revalidate"
           Pragma: "no-cache"
           Expires: "0"
           Surrogate-Control: "no-store"
-          X-Ping: "pong"
 
     cors-middleware:
       headers:
@@ -27,6 +27,7 @@ http:
           - OPTIONS
           - HEAD
         accessControlAllowHeaders: "*"
+        accessControlExposeHeaders: "*"
         accessControlAllowOriginList:
           - "*"
         accessControlMaxAge: 100
