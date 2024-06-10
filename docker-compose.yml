@@ -26,7 +26,6 @@ services:
       - ./traefik/traefik.yml:/traefik.yml:ro
       - ./traefik/services/:/services/:ro
       - ./traefik/acme/:/acme/
-      - ./certs/:/certs/
 
 networks:
   public:
