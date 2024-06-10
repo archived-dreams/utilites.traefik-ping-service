@@ -13,10 +13,9 @@ entryPoints:
 
   web-secure:
     address: ":443"
-    http3: {}
     http:
-      tls: {}
-        # certResolver: customResolver
+      tls:
+        certResolver: customResolver
 
 providers:
   docker:
@@ -32,9 +31,9 @@ api:
 ping:
   manualRouting: true
 
-# certificatesResolvers:
-#   customResolver:
-#     acme:
-#       storage: /acme/acme.json
-#       httpChallenge:
-#         entryPoint: web
+certificatesResolvers:
+  customResolver:
+    acme:
+      storage: /acme/acme.json
+      httpChallenge:
+        entryPoint: web
